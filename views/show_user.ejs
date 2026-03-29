@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Users</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h2>All Users</h2>
+  <div class="table-wrapper">
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+      <% for(user of users) { %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.username %></td>
+        <td><%= user.email %></td>
+        <td class="action-row">
+          <a href="/user/<%=user.id%>/edit">
+            <button class="btn-edit">Edit</button>
+          </a>
+          <form method="POST" action="/user/<%=user.id%>?_method=DELETE" style="display:inline;">
+            <button class="btn-delete">Delete</button>
+          </form>
+        </td>
+      </tr>
+      <% } %>
+    </table>
+    <div class="add-row">
+      <a href="/user/add"><button class="btn-add">+ Add User</button></a>
+    </div>
+  </div>
+</body>
+</html>
